@@ -1,0 +1,12 @@
+.build/
+.swiftpm/
+Models/*.mlpackage
+Models/*.mlmodelc
+Models/*.pth
+tools/.venv/
+tools/weights/
+*.mov
+*.mp4
+build/
+.DS_Store
+__pycache__/
