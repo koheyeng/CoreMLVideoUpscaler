@@ -364,7 +364,9 @@ final class FrameRateConverter: @unchecked Sendable {
             nextFrame: srcFrame(at: i + 1),
             opticalFlow: nil,
             interpolationPhase: phases,
-            submissionMode: .sequential,
+            // .sequential だと動きの大きい素材で補間フレームが破綻する（明るさが落ちたり、
+            // どのソースフレームにも似ない絵になる）。.random なら破綻せず、速度もほぼ同じ。
+            submissionMode: .random,
             destinationFrames: destFrames
         ) else {
             throw UpscaleError.featureUnavailable("VTFrameRateConversionParameters の作成に失敗しました")
